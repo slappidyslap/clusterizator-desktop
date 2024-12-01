@@ -12,6 +12,12 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+    maven {
+        url = uri("https://oss.sonatype.org/content/repositories/snapshots/")
+        mavenContent {
+            snapshotsOnly()
+        }
+    }
 }
 
 java {
@@ -24,8 +30,8 @@ tasks.withType<JavaCompile> {
 }
 
 application {
-    mainModule.set("kg.musabaev.clusterizator.clusterizator")
-    mainClass.set("kg.musabaev.clusterizator.clusterizator.HelloApplication")
+    mainModule.set("kg.musabaev.clusterizator")
+    mainClass.set("kg.musabaev.clusterizator.Starter")
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
@@ -42,6 +48,11 @@ javafx {
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.2")
+    implementation("de.saxsys:mvvmfx:1.9.0-SNAPSHOT")
+    implementation("de.saxsys:mvvmfx-easydi:1.9.0-SNAPSHOT")
+
+    implementation("com.opencsv:opencsv:5.9")
+
 }
 
 tasks.test {
